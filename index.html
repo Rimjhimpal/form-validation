@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myform{
+            border:2px solid black;
+            margin-left:20px;
+            margin-right: 1200px;
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+<form id="myform" onsubmit="return validateForm()">
+    <label for="name">Name</label><br>
+    <input type="text" id="name" placeholder="Enter your name"><br>
+
+    <label for="email">Email</label><br>
+    <input type="email" id="email" placeholder="Enter your Email"><br>
+
+    <label for="password">Password</label><br>
+    <input type="password" id="password" placeholder="Enter password"><br>
+
+    <label for="confirmpassword">Confirm password</label><br>
+    <input type="password" id="confirmpassword" placeholder="Confirm password"><br>
+
+    <label for="number">Number</label><br>
+    <input type="number" id="number" placeholder="Enter your number"><br>
+
+    <input type="submit" value="submit">
+</form>
+<script>
+    function validateForm(){
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var password = document.getElementById('password').value.trim();
+        var confirmpassword = document.getElementById('confirmpassword').value.trim();
+        var number = document.getElementById('number').value.trim();
+
+        if(name === ""){
+            alert("Name is required");
+            return false;
+        }
+        if(email === ""){
+            alert("Email is required");
+            return false;
+        }
+        if(password === ""){
+            alert("Password is necessary");
+            return false;
+        } else {
+            // Check if password contains at least one alphabet
+            if (!/[a-zA-Z]/.test(password)) {
+                alert("Password must contain at least one alphabet");
+                return false;
+            }
+        }
+        if(confirmpassword === ""){
+            alert("Confirm password is required");
+            return false;
+        } else if (confirmpassword !== password) {
+            alert("Passwords do not match");
+            return false;
+        }
+        if(number === ""){
+            alert("Number is required");
+            return false;
+        } return true;
+    }
+</script>
+
+</body>
+</html>
